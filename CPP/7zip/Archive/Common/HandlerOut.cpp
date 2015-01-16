@@ -37,7 +37,8 @@ void CMultiMethodProps::SetGlobalLevelAndThreads(COneMethodInfo &oneMethodInfo
 void CMultiMethodProps::Init()
 {
   #ifndef _7ZIP_ST
-  _numProcessors = _numThreads = NSystem::GetNumberOfProcessors();
+  _numProcessors = _numThreads = NSystem::GetNumberOfProcessors();//这里取得本机处理器的数目，也就是说这个类可能跟性能有关，即如果
+																//本机cpu为多核的，则可以使用多线程处理，提高压缩/解压的速度。也就是说，这个跟核心算法没啥关系，不用管它
   #endif
   
   _level = (UInt32)(UInt32)-1;

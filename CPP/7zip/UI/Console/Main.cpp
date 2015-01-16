@@ -502,7 +502,7 @@ int Main2(
   }
   else if (options.Command.IsFromUpdateGroup())
   {
-    CUpdateOptions &uo = options.UpdateOptions;
+    CUpdateOptions &uo = options.UpdateOptions;//option是从输入参数中解析得到的。
     if (uo.SfxMode && uo.SfxModule.IsEmpty())
       uo.SfxModule = kDefaultSfxModule;
 
@@ -532,7 +532,7 @@ int Main2(
     if (!uo.Init(codecs, formatIndices, options.ArchiveName))
       throw kUnsupportedArcTypeMessage;
     HRESULT result = UpdateArchive(codecs,
-        options.WildcardCensor, uo,
+        options.WildcardCensor, uo,//uo的来源是option，这里uo保存了输入文件的信息（比如我这次指定的 "test.7z"，当然是以一个结构的形式保存的，还附带了getter，setter）
         errorInfo, &openCallback, &callback);
 
     int exitCode = NExitCode::kSuccess;
