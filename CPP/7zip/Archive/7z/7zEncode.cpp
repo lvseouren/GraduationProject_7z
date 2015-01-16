@@ -139,7 +139,7 @@ HRESULT CEncoder::CreateMixerCoder(
   }
   return S_OK;
 }
-
+	
 HRESULT CEncoder::Encode(
     DECL_EXTERNAL_CODECS_LOC_VARS
     ISequentialInStream *inStream,

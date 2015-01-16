@@ -739,6 +739,7 @@ void COutArchive::WriteHeader(
   WriteByte(NID::kEnd); // for headers
 }
 
+
 HRESULT COutArchive::WriteDatabase(
     DECL_EXTERNAL_CODECS_LOC_VARS
     const CArchiveDatabase &db,

@@ -399,7 +399,7 @@ static HRESULT Compress(
   {
     if (stdOutMode)
       outStream = new CStdOutFileStream;
-    else
+    else//找到了最新区间 start 建立test.7z
     {
       outStreamSpec = new COutFileStream;
       outStream = outStreamSpec;
@@ -419,7 +419,7 @@ static HRESULT Compress(
         }
         else
           realPath = us2fs(archivePath.GetFinalPath());
-        if (outStreamSpec->Create(realPath, false))
+        if (outStreamSpec->Create(realPath, false))//got it! this is the place where create test.7z!!
         {
           tempFiles.Paths.Add(realPath);
           isOK = true;
@@ -429,7 +429,7 @@ static HRESULT Compress(
           break;
         if (!archivePath.Temp)
           break;
-      }
+      }//end create test.7z
       if (!isOK)
       {
         errorInfo.SystemError = ::GetLastError();
@@ -496,7 +496,7 @@ static HRESULT Compress(
     }
   }
 
-  HRESULT result = outArchive->UpdateItems(outStream, updatePairs2.Size(), updateCallback);
+  HRESULT result = outArchive->UpdateItems(outStream, updatePairs2.Size(), updateCallback);//压缩的主要战场在这里面，执行完这个函数，目标.7z就已经生成了
   callback->Finilize();
   RINOK(result);
   if (outStreamSpec)

@@ -67,7 +67,7 @@ public:
 
   void InitSolidFiles() { _numSolidFiles = (UInt64)(Int64)(-1); }
   void InitSolidSize()  { _numSolidBytes = (UInt64)(Int64)(-1); }
-  void InitSolid()
+  void InitSolid()//执行到这里时，test.7z还没生成！
   {
     InitSolidFiles();
     InitSolidSize();

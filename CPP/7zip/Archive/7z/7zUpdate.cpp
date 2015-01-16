@@ -665,7 +665,7 @@ HRESULT Update(
     #endif
     )
 {
-  UInt64 numSolidFiles = options.NumSolidFiles;
+  UInt64 numSolidFiles = options.NumSolidFiles;//2015-1-16 17:55--到这已经生成test.7z了
   if (numSolidFiles == 0)
     numSolidFiles = 1;
   /*

@@ -1126,7 +1126,7 @@ void CArchiveDatabaseEx::FillFolderStartFileIndex()
   }
 }
 
-HRESULT CInArchive::ReadDatabase2(
+HRESULT CInArchive::ReadDatabase2(//header,position,
     DECL_EXTERNAL_CODECS_LOC_VARS
     CArchiveDatabaseEx &db
     #ifndef _NO_CRYPTO
@@ -1202,7 +1202,7 @@ HRESULT CInArchive::ReadDatabase2(
 
   RINOK(ReadStream_FALSE(_stream, buffer2, (size_t)nextHeaderSize));
   HeadersSize += kHeaderSize + nextHeaderSize;
-  db.PhySize = kHeaderSize + nextHeaderOffset + nextHeaderSize;
+  db.PhySize = kHeaderSize + nextHeaderOffset + nextHeaderSize;//首部header+尾部header+两者之间pack的size = 总size
 
   if (CrcCalc(buffer2, (UInt32)nextHeaderSize) != nextHeaderCRC)
     ThrowIncorrect();

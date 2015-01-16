@@ -12,7 +12,8 @@ CFolderInStream::CFolderInStream()
   _inStreamWithHashSpec = new CSequentialInStreamWithCRC;
   _inStreamWithHash = _inStreamWithHashSpec;
 }
-
+//执行到这里时，test.7z文件已经出现在文件夹中，而上一个断点还没有——即在这个断点与上个断点之间生成了test.7z文件
+//此时，test.7z的大小还是0，也就是说仅仅生成了这个文件，但还没往里面写入任何数据。
 void CFolderInStream::Init(IArchiveUpdateCallback *updateCallback,
     const UInt32 *fileIndices, UInt32 numFiles)
 {
