@@ -278,7 +278,7 @@ void MatchFinder_Init(CMatchFinder *p)
   p->pos = p->streamPos = p->cyclicBufferSize;
   p->result = SZ_OK;
   p->streamEndWasReached = 0;
-  MatchFinder_ReadBlock(p);
+  MatchFinder_ReadBlock(p);//this function process the input file
   MatchFinder_SetLimits(p);
 }
 

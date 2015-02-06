@@ -500,7 +500,8 @@ static HRESULT Compress(
   callback->Finilize();
   RINOK(result);
   if (outStreamSpec)
-    result = outStreamSpec->Close();
+    result = outStreamSpec->Close();//here:output data to test.7z--
+  //后面的就不用看了，读取test.txt，压缩data，写入test.7z——主要的逻辑已经结束了。
   else if (volStreamSpec)
     result = volStreamSpec->Close();
   return result;

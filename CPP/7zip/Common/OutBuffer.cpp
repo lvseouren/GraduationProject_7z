@@ -33,7 +33,7 @@ void COutBuffer::SetStream(ISequentialOutStream *stream)
 void COutBuffer::Init()
 {
   _streamPos = 0;
-  _limitPos = _bufferSize;
+  _limitPos = _bufferSize;//看看这个值是不是396——不是，这个值是65536
   _pos = 0;
   _processedSize = 0;
   _overDict = false;
@@ -51,7 +51,7 @@ UInt64 COutBuffer::GetProcessedSize() const
 }
 
 
-HRESULT COutBuffer::FlushPart()
+HRESULT COutBuffer::FlushPart()//this function seem important,about memory ,position,and output data
 {
   // _streamPos < _bufferSize
   UInt32 size = (_streamPos >= _pos) ? (_bufferSize - _streamPos) : (_pos - _streamPos);
